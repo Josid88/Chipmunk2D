@@ -141,18 +141,7 @@ CircleSegmentQuery(cpShape *shape, cpVect center, cpFloat r1, cpVect a, cpVect b
 	}
 }
 
-static inline cpBool
-cpShapeFilterReject(cpShapeFilter a, cpShapeFilter b)
-{
-	// Reject the collision if:
-	return (
-		// They are in the same non-zero group.
-		(a.group != 0 && a.group == b.group) ||
-		// One of the category/mask combinations fails.
-		(a.categories & b.mask) == 0 ||
-		(b.categories & a.mask) == 0
-	);
-}
+#include "custom/cpShapeFilterReject.h"
 
 void cpLoopIndexes(const cpVect *verts, int count, int *start, int *end);
 
